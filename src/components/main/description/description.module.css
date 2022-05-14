@@ -1,0 +1,12 @@
+.description{
+    width: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(0, 3, 34, 0.82);
+    margin-top: 13px;
+}
+.date{
+    margin-top: 13px;
+    font-weight: 400;
+    font-size: 14px;
+}

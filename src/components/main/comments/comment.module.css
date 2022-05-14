@@ -1,0 +1,41 @@
+.comments{
+    max-height: 110px;
+    overflow-y: scroll;
+    margin-top: 23px;
+}
+.commentHeader{
+    display: flex;
+    align-items: center;
+}
+.commentFooter p{
+    font-weight: 300;
+    font-size: 11px;
+    color: rgba(0, 3, 34, 0.82);
+    margin-top: 0px;
+    margin-bottom: 6px;
+}
+.profileImg{
+    min-width: 20px;
+    min-height: 20px;
+    background-size: cover!important;
+    background-position: 50% 50%!important;
+    border-radius: 50%;
+}
+.profileData{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 6px;
+}
+.profileData p{
+    font-weight: 500;
+    font-size: 12px;
+    color: rgba(8, 0, 54, 0.52);
+
+}
+.profileData span{
+    font-weight: 300;
+    font-size: 11px;
+    color: rgba(0, 3, 34, 0.82);
+}
