@@ -1,0 +1,17 @@
+.postLeft{
+    width: 47%;
+}
+.postRight{
+    width: 53%;
+}
+.postImage{
+    width: 100%;
+    border-radius: 8px;
+}
+.post{
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    margin-top: 16px;
+    margin-bottom: 50px;
+}

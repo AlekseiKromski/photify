@@ -3,19 +3,3 @@
     display: flex;
     gap: 30px;
 }
-.posts{
-    width: 74%;
-    display: flex;
-    gap: 20px;
-    padding-top: 16px;
-}
-.postLeft{
-    width: 47%;
-}
-.postRight{
-    width: 53%;
-}
-.postImage{
-    width: 100%;
-    border-radius: 8px;
-}

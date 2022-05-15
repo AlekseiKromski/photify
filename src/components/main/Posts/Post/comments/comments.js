@@ -8,6 +8,7 @@ class Comments extends Component{
         const commentsElements = comments.map((number) =>
             <Comment key={number}/>
         );
+
         return (
             <div className={Classes.comments}>
                 {commentsElements}

@@ -1,0 +1,40 @@
+.main{
+    display: flex;
+    margin-bottom: 12px;
+    align-items: center;
+    padding: 7px;
+    background: #F8F8F8;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.main:hover{
+    background: #f5f5f5;
+    transition: 0.3s;
+}
+.profileImage{
+    min-width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-size: cover!important;
+    background-position: 50% 50%!important;
+}
+.profileDescription{
+    margin-left: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.profileDescription h1 {
+    font-weight: 700;
+    font-size: 14px;color: rgba(8, 0, 54, 0.52);
+    margin: 0px;
+}
+.profileDescription p {
+    font-weight: 300;
+    font-size: 12px;
+    color: rgba(0, 3, 34, 0.82);
+    margin: 0px;
+}
