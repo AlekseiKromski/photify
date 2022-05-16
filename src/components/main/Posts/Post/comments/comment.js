@@ -13,7 +13,7 @@ class Comment extends Component{
                     </div>
                 </div>
                 <div className={Classes.commentFooter}>
-                    <p>Lorem ipsum</p>
+                    <p>{this.props.comment.text}</p>
                 </div>
             </div>
         )

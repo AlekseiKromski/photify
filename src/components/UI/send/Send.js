@@ -5,7 +5,8 @@ import {faPaperPlane} from '@fortawesome/free-solid-svg-icons'
 class Send extends Component {
     render() {
         return (
-            <div className={Classes.send}>
+            <div
+                onClick={() => {this.props.createNewComment()}} className={Classes.send}>
                 <FontAwesomeIcon style={{color: 'rgba(255, 255, 255, 0.62)'}} icon={faPaperPlane} />
             </div>
         );
