@@ -1,11 +1,11 @@
 .comments{
     max-height: 110px;
-    overflow-y: scroll;
     margin-top: 23px;
 }
 .commentHeader{
     display: flex;
     align-items: center;
+    width: 95%;
 }
 .commentFooter p{
     font-weight: 300;
@@ -13,6 +13,8 @@
     color: rgba(0, 3, 34, 0.82);
     margin-top: 0px;
     margin-bottom: 6px;
+    width: 95%;
+
 }
 .profileImg{
     min-width: 20px;
@@ -38,4 +40,9 @@
     font-weight: 300;
     font-size: 11px;
     color: rgba(0, 3, 34, 0.82);
+}
+.inputSection{
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
 }

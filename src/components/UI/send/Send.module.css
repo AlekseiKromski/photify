@@ -1,0 +1,16 @@
+.send{
+    min-width: 32px;
+    height: 32px;
+    background: rgba(8, 0, 54, 0.52);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.send:hover{
+    background: rgb(8 0 54 / 32%);
+    transition: 0.3s;
+}

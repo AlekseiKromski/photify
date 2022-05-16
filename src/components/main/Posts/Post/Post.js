@@ -12,6 +12,7 @@ class Post extends Component{
                     <Profile/>
                     <Description/>
                     <Comments/>
+
                 </div>
                 <div className={Classes.postRight}>
                     <img className={Classes.postImage} src="/img/posts/fineas-anton-8pKrkO2cx1A-unsplash.jpg" alt=""/>
