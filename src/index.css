@@ -1,0 +1,19 @@
+.followed{
+    color: rgba(8, 0, 54, 0.52);
+}
+.hide{
+    animation: hiding 0.3s forwards!important;
+}
+@keyframes hiding {
+
+    from{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    to{
+
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+}
+

@@ -28,10 +28,11 @@ class Comments extends Component{
     }
 
     createNewCommentHandler(){
-        console.log(this)
-        let comments = this.state.comments;
-        comments.push({text: this.state.text})
-        this.setState({comments: comments, text: ""})
+        if(this.state.text !== ''){
+            let comments = this.state.comments;
+            comments.push({text: this.state.text})
+            this.setState({comments: comments, text: ""})
+        }
     }
 
     componentDidUpdate() {
@@ -57,7 +58,7 @@ class Comments extends Component{
                     {displayedComments}
                 </PerfectScrollbar>
                 <div className={Classes.inputSection}>
-                    <Input text={this.state.text} setText={(text) => this.setTextHandler(text)}/>
+                    <Input createNewComment={() => {this.createNewCommentHandler()}} text={this.state.text} setText={(text) => this.setTextHandler(text)}/>
                     <Send createNewComment={() => { this.createNewCommentHandler() }}/>
                 </div>
             </div>

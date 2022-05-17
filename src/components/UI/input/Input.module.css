@@ -3,6 +3,7 @@
     width: 100%;
     border: 1px solid rgba(8, 0, 54, 0.52);
     border-radius: 8px;
+    padding-left: 5px;
 }
 .input:focus{
     outline: none

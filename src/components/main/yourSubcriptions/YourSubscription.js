@@ -1,6 +1,7 @@
 import {Component} from "react";
 import Classes from './YourSubscription.module.css';
 import Profile from './Profile/Profile'
+
 class YourSubscription extends Component{
     render(){
         let test = []
