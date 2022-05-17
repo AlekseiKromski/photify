@@ -39,6 +39,7 @@
     position: relative;
     border-radius: 8px;
     padding: 4px;
+    transition: 0.3s;
 }
 
 .iconBlock:hover{

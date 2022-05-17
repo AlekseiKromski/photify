@@ -1,0 +1,32 @@
+.event{
+    padding: 8px;
+    background: #F8F8F8;
+    border-radius: 8px;
+    margin-top: 12px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header h1{
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(8, 0, 54, 0.52);
+    margin:0;
+    margin-bottom: 3px  ;
+    font-weight: 700;
+}
+.header span{
+    font-size: 10px;
+    line-height: 12px;
+    color: rgba(0, 3, 34, 0.82);
+}
+.eventDescription{
+    font-size: 13px;
+    line-height: 16px;
+    color: rgba(0, 3, 34, 0.82);
+}
+.selected{
+    color: rgba(222, 66, 91, 0.52);
+}

@@ -6,7 +6,7 @@ class Main_layout extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            showEvents: true,
+            showEvents: false,
             eventsDOM: React.createRef()
         }
     }
@@ -21,16 +21,13 @@ class Main_layout extends Component{
             }else{
                 this.setState({showEvents: !this.state.showEvents})
             }
-
-
-
         }
     }
 
     render(){
         return (
             <div className={'container'}>
-                <Navigation showEvents={() => {this.showEventsHandler()}}></Navigation>
+                <Navigation showEvents={this.state.showEvents} showEventsTrigger={() => {this.showEventsHandler()}}></Navigation>
                 {
                     this.state.showEvents ? <Events eventsDOM={this.state.eventsDOM} /> : null
                 }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Classes from './Events.module.css'
+import Event from './Event/Event'
 class Events extends Component {
     constructor(props) {
         super(props);
@@ -7,7 +8,11 @@ class Events extends Component {
     render() {
         return (
             <div ref={this.props.eventsDOM} className={Classes.events}>
-                Events
+                <h1>Events</h1>
+                <Event/>
+                <Event/>
+                <Event/>
+                <Event/>
             </div>
         );
     }

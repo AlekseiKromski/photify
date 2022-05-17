@@ -1,6 +1,5 @@
 .events{
-    width: 232px;
-    height: 461px;
+    width: 245px;
     background: #FFFFFF;
     padding: 16px;
     box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.06);
@@ -12,7 +11,13 @@
     animation: showing 0.3s;
 }
 
+.events h1{
+    font-size: 16px;
+    line-height: 19px;
+    color: rgba(8, 0, 54, 0.52);
+    font-weight: 400;
 
+}
 @keyframes showing {
     from{
         transform: translateY(-30px);
