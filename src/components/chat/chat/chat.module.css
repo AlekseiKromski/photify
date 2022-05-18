@@ -1,3 +1,10 @@
 .chat{
     flex: 69%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.mock{
+    flex: 1;
 }

@@ -5,7 +5,7 @@ import {faUserCheck} from "@fortawesome/free-solid-svg-icons";
 class Dialog extends Component {
     render() {
         return (
-            <div className={[Classes.dialog].join(' ')}>
+            <div className={[Classes.dialog, Classes.active].join(' ')}>
                 <div className={Classes['profile-image']} style={{background: "url('/img/profiles/aiony-haust-3TLl_97HNJo-unsplash.jpg')"}} />
                 <div className={Classes.profile}>
                     <div className={Classes['profile-data']}>

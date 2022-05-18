@@ -8,7 +8,7 @@ class Chat extends Component {
             <div className='container'>
                 <div className="row">
                     <div className={Classes.content}>
-                        <Dialogs  />
+                        <Dialogs />
                         <ChatComponent/>
                     </div>
                 </div>

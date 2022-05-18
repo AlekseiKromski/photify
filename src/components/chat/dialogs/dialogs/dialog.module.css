@@ -8,14 +8,15 @@
     margin-bottom: 5px;
     cursor: pointer;
     transition: 0.3s;
+    margin-right: 15px;
 }
 .dialog:hover{
     background: #f8f8f8;
     transition: 0.3s;
 }
 .profile-image{
-    width: 40px;
-    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     border-radius: 50%;
     background-size: cover!important;
     background-position: 50% 50%!important;
@@ -38,13 +39,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 294px;
     margin-bottom: 2px;
 }
 
 .profile{
     margin-left: 10px;
-
+    width: 100%;
 }
 
 .who{
