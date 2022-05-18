@@ -6,7 +6,7 @@ class Posts extends Component{
         let posts = [1,2,3,4,5,6]
         return (
             <div className={Classes.posts}>
-                {posts.map(post => <Post/>)}
+                {posts.map(post => <Post key={post}/>)}
             </div>
         )
     }

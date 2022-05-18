@@ -1,0 +1,78 @@
+.dialog{
+    height: 46px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.dialog:hover{
+    background: #f8f8f8;
+    transition: 0.3s;
+}
+.profile-image{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover!important;
+    background-position: 50% 50%!important;
+}
+.profile-nickname{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(0, 3, 34, 0.82);
+    margin: 0px;
+}
+.profile-status{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(0, 3, 34, 0.82);
+    margin: 0;
+}
+.profile-data{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 294px;
+    margin-bottom: 2px;
+}
+
+.profile{
+    margin-left: 10px;
+
+}
+
+.who{
+    font-weight: 600;
+    color: rgba(0, 3, 34, 0.82);
+}
+.message{
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(0, 3, 34, 0.82);
+}
+.active{
+    background: #F2AAB5;
+}
+.active:hover{
+    background: #e05f73;
+}
+.active .profile-nickname{
+    color: white;
+}
+.active .message {
+    color: white;
+}
+.active .profile-status {
+    color: white;
+}
+.active .who {
+    color: white;
+}
+

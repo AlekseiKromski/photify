@@ -1,0 +1,9 @@
+.dialogs{
+    flex: 31%;
+}
+.dialogs h1{
+    font-weight: 700;
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: 11px;
+}

@@ -6,7 +6,7 @@ class YourSubscription extends Component{
     render(){
         let test = []
         for(let i = 0; i < 4; i++){
-            test.push(<Profile/>)
+            test.push(<Profile key={i}/>)
         }
 
         return (
