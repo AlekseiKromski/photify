@@ -1,0 +1,13 @@
+.content{
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+.preview{
+    flex: 74%;
+}
+
+.createPostMenu{
+    flex: 26%;
+}

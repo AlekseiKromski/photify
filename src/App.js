@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom';
 import MainLayout from './hoc/layout/MainLayout';
 import Main from './containers/main/main';
 import Chat from './containers/chat/Chat'
+import CreatePost from "./containers/createPost/createPost";
 //containers (pages)
 
 class App extends Component{
@@ -13,6 +14,7 @@ class App extends Component{
         <Routes>
             <Route path={'/'} element={<Main/>}></Route>
             <Route path={'/chat'} element={<Chat/>}></Route>
+            <Route path={'/create-post'} element={<CreatePost/>}></Route>
         </Routes>
       </MainLayout>
     )
