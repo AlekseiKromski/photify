@@ -34,7 +34,7 @@ class Messages extends Component {
                     <Message/>
                     <Message/>
                 </PerfectScrollbar>
-
+                <span className={Classes.isWriting}>#lana is writing ...</span>
             </div>
         );
     }

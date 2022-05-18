@@ -8,3 +8,10 @@
 .mock{
     flex: 1;
 }
+.send{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    z-index: 1;
+    align-items: center;
+}
