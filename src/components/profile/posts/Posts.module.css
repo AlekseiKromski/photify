@@ -1,3 +1,50 @@
 .posts{
     flex: 78%;
+    padding: 0px 19px;
+    position: relative;
 }
+.posts h1{
+    font-size: 16px;
+    color: rgba(0, 3, 34, 0.82);
+    margin-bottom: 8px;
+    margin-top: 0px;
+}
+.postRow:first-child{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 30%;
+    gap: 20px;
+    justify-content: center;
+    align-items: start;
+}
+
+.post{
+    width: 174px;
+    height: 240px;
+    border-radius: 8px;
+    background-size: cover!important;
+    background-position: 50% 50%!important;
+    flex: 30%;
+    cursor: pointer;
+}
+.post:nth-child(2){
+    width: 174px;
+    height: 240px;
+    border-radius: 8px;
+    background-size: cover!important;
+    background-position: 50% 50%!important;
+    flex: 30%;
+    transform: translateY(50px);
+}
+.postRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 30%;
+    gap: 20px;
+    justify-content: center;
+    align-items: start;
+    margin-top: 20px;
+}
+
