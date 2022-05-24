@@ -9,7 +9,9 @@ import Profile from './containers/profile/Profile'
 //containers (pages)
 
 class App extends Component{
-  render(){
+
+
+    render(){
     return (
       <MainLayout>
         <Routes>

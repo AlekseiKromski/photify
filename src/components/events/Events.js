@@ -5,6 +5,9 @@ class Events extends Component {
     constructor(props) {
         super(props);
     }
+
+
+
     render() {
         return (
             <div ref={this.props.eventsDOM} className={Classes.events}>

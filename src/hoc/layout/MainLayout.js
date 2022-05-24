@@ -19,21 +19,43 @@ class Main_layout extends Component{
                     this.setState({showEvents: !this.state.showEvents})
                 })
             }else{
+
                 this.setState({showEvents: !this.state.showEvents})
+
+            }
+        }
+    }
+
+
+    eventsClickListener(e){
+        e.stopPropagation()
+        if(this.state.showEvents){
+            e.stopPropagation();
+            let run = true;
+            for(let element of e.nativeEvent.path){
+                if(element === this.state.eventsDOM.current){
+                    run = false;
+                    break;
+                }
+            }
+            if(run){
+                this.showEventsHandler();
             }
         }
     }
 
     render(){
         return (
-            <div className={'container'}>
-                <Navigation showEvents={this.state.showEvents} showEventsTrigger={() => {this.showEventsHandler()}}></Navigation>
-                {
-                    this.state.showEvents ? <Events eventsDOM={this.state.eventsDOM} /> : null
-                }
-                <main>
-                    {this.props.children}
-                </main>
+            <div onClick={(e) => {this.eventsClickListener(e)}}>
+                <div className={'container'} >
+                    <Navigation showEvents={this.state.showEvents} showEventsTrigger={() => {this.showEventsHandler()}}></Navigation>
+                    {
+                        this.state.showEvents ? <Events eventsDOM={this.state.eventsDOM} /> : null
+                    }
+                    <main>
+                        {this.props.children}
+                    </main>
+                </div>
             </div>
         )
     }
