@@ -8,12 +8,14 @@ const Profile = new Schema({
     description: {
         type: String
     },
-    followers: {
-        type: Number
-    },
-    followed: {
-        type: Number
-    },
+    followers: [{
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
+    }],
+    followed: [{
+        type: Schema.Types.ObjectId,
+        ref: "Profile"
+    }],
     count_points: {
         type: Number
     },

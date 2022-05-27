@@ -30,4 +30,9 @@ body{
 }
 
 
+@keyframes toTop {
+   to{
+      transform: translateY(-1080px);
 
+   }
+}
