@@ -1,0 +1,26 @@
+.lightBall{
+    position: absolute;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    bottom: -10px;
+    background: #080036;
+    border-radius: 50%;
+    z-index: -1;
+
+}
+.lightBallBg{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+.lightBallBlock{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+}

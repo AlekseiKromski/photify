@@ -5,6 +5,12 @@ const Profile = new Schema({
     nickname: {
         type: String
     },
+    email: {
+        type: String
+    },
+    password: {
+        type: String
+    },
     description: {
         type: String
     },

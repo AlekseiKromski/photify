@@ -2,6 +2,7 @@ import './App.css';
 import {Component} from "react";
 import {Routes, Route, Navigate} from 'react-router-dom';
 import MainLayout from './hoc/layout/MainLayout';
+import LoginLayout from "./hoc/layout/LoginLayout";
 import Main from './containers/main/main';
 import Chat from './containers/chat/Chat'
 import CreatePost from "./containers/createPost/createPost";
@@ -36,11 +37,14 @@ class App extends Component{
             )
         }else {
             render = (
-                <Routes>
-                    <Route path={'/login'} element={<Login/>}></Route>
-                    <Route path={'/register'} element={<Register/>}></Route>
-                    <Route path="*" element={<Navigate to={'/login'}/>}/>
-                </Routes>
+                <LoginLayout>
+                    <Routes>
+                        <Route path={'/login'} element={<Login/>}></Route>
+                        <Route path={'/register'} element={<Register/>}></Route>
+                        <Route path="*" element={<Navigate to={'/login'}/>}/>
+                    </Routes>
+                </LoginLayout>
+
             )
 
         }

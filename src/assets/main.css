@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 body{
    font-family: 'Inter';
+   margin: 0;
 }
 
 .container{
@@ -31,8 +32,6 @@ body{
 
 @keyframes toTop {
    to{
-      transform: translateY(-2080px);
-      width: 20px;
-      height: 20px;
+      transform: translateY(-2080px) scale(1.5);
    }
 }

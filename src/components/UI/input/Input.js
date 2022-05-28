@@ -13,7 +13,6 @@ class Input extends Component {
                     onChange={(event) => {
                         this.props.setText(event.target.value)
                     }}
-                    onKeyDown={(event) => {if(event.which === 13){this.props.createNewComment()}}}
                     type={this.props.type ? this.props.type : "text"}
                     className={Classes.input}/>
             </div>
