@@ -13,6 +13,7 @@ import {createStore} from 'redux';
 import {Provider} from "react-redux";
 import rootReducer from './store/reducers/rootReducer'
 import {login} from './store/actions/userAction'
+import Register from "./containers/register/Register";
 const store = createStore(rootReducer)
 class App extends Component{
 
@@ -37,6 +38,7 @@ class App extends Component{
             render = (
                 <Routes>
                     <Route path={'/login'} element={<Login/>}></Route>
+                    <Route path={'/register'} element={<Register/>}></Route>
                     <Route path="*" element={<Navigate to={'/login'}/>}/>
                 </Routes>
             )

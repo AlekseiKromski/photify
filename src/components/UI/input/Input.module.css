@@ -4,7 +4,16 @@
     border: 1px solid rgba(8, 0, 54, 0.52);
     border-radius: 8px;
     padding-left: 5px;
+    margin-top: 8px;
+    box-sizing: border-box;
 }
+.inputBlock{
+    width: 100%;
+    display: flex;
+    margin-bottom: 14px;
+    flex-direction: column;
+}
+
 .input:focus{
     outline: none
 }

@@ -18,7 +18,7 @@
     overflow: hidden;
     position: relative;
 }
-.loginBlock{
+.registerBlock{
     width: 300px;
     height: 400px;
     background: rgba(255, 255, 255, 0.55);
@@ -36,12 +36,12 @@
     opacity: 0%;
     animation: fadeIn 1.5s forwards;
 }
-.loginBockWrapper{
+.registerBockWrapper{
     display: flex;
     flex-direction: column;
     width: 90%;
 }
-.loginBockWrapper h1{
+.registerBockWrapper h1{
     text-align: center;
     color: #080036;
     margin-top: 8px;
@@ -62,13 +62,13 @@
     color: #080036;
     font-size: 32px;
 }
-.signUp{
+.signIn{
     margin-top: 12px;
     color: #de425b;
     font-size: 12px;
     transition: 0.3s;
 }
-.signUp:hover{
+.signIn:hover{
     color: #f30c31;
     transition: 0.3s;
 }
