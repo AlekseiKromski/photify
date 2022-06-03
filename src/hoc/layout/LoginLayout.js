@@ -4,7 +4,9 @@ class LoginLayout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            balls: Array.from({length: 100}, () => Math.floor(Math.random() * 10000))
+            balls: Array.from({length: 100}, () => Math.floor(Math.random() * 10000)),
+            width: window.innerWidth,
+            hide: false
         }
     }
 
@@ -15,11 +17,11 @@ class LoginLayout extends Component {
                 <div className={Classes.lightBallBg}>
                     {this.props.children}
 
-                    <div className={Classes.lightBallBlock}>
+                    <div className={[Classes.lightBallBlock, this.state.hide ? Classes.hide : ''].join(' ')}>
                         {this.state.balls.map(el => <div style={
 
                             {
-                                'left':  (Math.random() * (window.innerWidth - 0) + 0),
+                                'left':  (Math.random() * (this.state.width + 500 - 0) + 0),
                                 'animation': 'toTop '+ (Math.random() * (30 - 10) + 10) +'s ease-in infinite',
                                 transform: 'translateY('+(Math.random() * (600 - 100) + 100)+'px)',
                                 background: el % 2 !== 0 ? '#de425b' : '#080036',
