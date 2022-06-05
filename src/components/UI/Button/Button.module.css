@@ -42,7 +42,8 @@
 }
 
 .bigEffect{
-
+    height: 0%;
+    width: 0%;
     background: #655f89;
     position: absolute;
     top: -10px;
@@ -59,15 +60,14 @@
     animation: showAnimation 1s ease-in forwards, spin 2s linear infinite;
 
 }
+.hide{
+    animation: hideAnimation 1s ease-in forwards;
+}
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 @keyframes bigEffectAnimation {
-    from {
-        height: 0%;
-        width: 0%;
-    }
     to {
         height: 105%;
         width: 105%;
@@ -79,5 +79,17 @@
     }
     to {
         opacity: 1;
+    }
+}
+@keyframes hideAnimation {
+    from {
+        opacity: 1;
+        height: 105%;
+        width: 105%;
+    }
+    to {
+        opacity: 0;
+        height: 0%;
+        width: 0%;
     }
 }

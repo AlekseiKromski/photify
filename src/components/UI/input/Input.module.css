@@ -17,4 +17,7 @@
 .input:focus{
     outline: none
 }
+.error{
+    border: 2px solid #de425b!important;
+}
 

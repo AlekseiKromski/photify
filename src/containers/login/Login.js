@@ -32,7 +32,7 @@ class Login extends Component {
 
     async clickHandler(){
         this.setState({loader: true})
-        await axios.post('/api/login', {
+        return await axios.post('/api/login', {
             email: this.state.email,
             password: this.state.password
         }).then(response => {
@@ -40,9 +40,9 @@ class Login extends Component {
 
             this.setState({loader: false})
 
-        }).catch(error => {
-            console.error(error)
-            this.setState({loader: false})
+        }).catch(e => {
+            this.setState({loader: false, hide: true})
+            return new Promise((resolve, reject) => {reject('hide')});
         })
     }
 
