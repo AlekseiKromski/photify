@@ -8,21 +8,15 @@ import Chat from './containers/chat/Chat'
 import CreatePost from "./containers/createPost/createPost";
 import Profile from './containers/profile/Profile'
 import Login from './containers/login/Login'
-
-//Connect redux
-import {createStore} from 'redux';
-import {Provider} from "react-redux";
-import rootReducer from './store/reducers/rootReducer'
-import {login} from './store/actions/userAction'
 import Register from "./containers/register/Register";
-const store = createStore(rootReducer)
+import {connect} from "react-redux";
+
 class App extends Component{
 
 
     render(){
-        let login = false
         let render = null
-        if(login){
+        if(this.props.user.token){
             render = (
                 <MainLayout>
                     <Routes>
@@ -50,12 +44,18 @@ class App extends Component{
         }
 
         return (
-            <Provider store={store}>
+            <div>
                 {render}
-            </Provider>
+            </div>
 
         )
   }
 }
 
-export default App;
+function mapStateToProps(state){
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, null)(App);

@@ -1,7 +1,8 @@
 import {USER_LOGIN} from '../actions/actionTypes';
 
 const initialState = {
-    user: null
+    user: null,
+    token: null
 }
 
 export default function userReducer(state = initialState, action){
@@ -11,7 +12,7 @@ export default function userReducer(state = initialState, action){
             break;
         case USER_LOGIN:
             return {
-                ...state
+                ...action.payload
             }
             break;
     }

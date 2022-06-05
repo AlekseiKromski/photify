@@ -15,7 +15,7 @@ class Register extends Component {
                 password: "",
                 password_confirmation: "",
             },
-            loader: true,
+            loader: false,
             trigger: true
         }
     }
@@ -27,7 +27,7 @@ class Register extends Component {
     }
 
     registerHandler(){
-        this.setState({loader: true, trigger: true})
+        this.setState({loader: true})
         axios.post("/api/register", {
             ...this.state.form
         }).then(response => {
@@ -51,7 +51,7 @@ class Register extends Component {
                         <Input setText={(value) => {this.registerInputHandler('email', value)}} label="Login"/>
                         <Input setText={(value) => {this.registerInputHandler('password', value)}} label="Password" type="password"/>
                         <Input setText={(value) => {this.registerInputHandler('password_confirmation', value)}} label="Password confirmation" type="password"/>
-                        <Button bigEffectTrigger={this.state.trigger} bigEffect={true} loader={this.state.loader} clickHandler={() => {this.registerHandler()}} text="Sign up"/>
+                        <Button  bigEffect={true} loader={this.state.loader} clickHandler={() => {this.registerHandler()}} text="Sign up"/>
                     </div>
                     <Link className={Classes.signIn} to={'/login'}>You already have account? </Link>
                 </div>
