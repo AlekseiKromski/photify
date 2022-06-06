@@ -81,13 +81,11 @@ function user_token_proccess (res, Profile){
     let profile_excluded = user_exclude_params(['password', 'refresh_token'], Profile)
 
     jwt.sign({ user: profile_excluded, exp: TOKEN_DATE_ACCESS}, process.env.SECRET_KEY, async function(err, access_token) {
-
         if(err){
             console.log(err)
             console.log('Token access token generation error')
             return res.status(500).json({"message": "Server error"})
         }
-
         try {
 
             jwt.verify(Profile.refresh_token, process.env.SECRET_KEY);

@@ -55,7 +55,7 @@ class Register extends Component {
     registerHandler(){
         this.clearError();
         this.setState({loader: true})
-        return axios.post("/api/register", {
+        return axios.post("/api/profile/register", {
             email: this.state.form.email.value,
             password: this.state.form.password.value,
             password_confirmation: this.state.form.password_confirmation.value,

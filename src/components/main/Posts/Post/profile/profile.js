@@ -9,8 +9,8 @@ class Profile extends Component{
                 <div className={Classes['profile-image']} style={{background: "url('/img/profiles/aiony-haust-3TLl_97HNJo-unsplash.jpg')"}} />
                <div className={Classes['profile-data']}>
                    <div className="">
-                       <h1 className={Classes['profile-nickname']}>#milana</h1>
-                       <p className={Classes['profile-description']}>Proffesional model</p>
+                       <h1 className={Classes['profile-nickname']}>{this.props.profile.nickname}</h1>
+                       <p className={Classes['profile-description']}>{this.props.profile.description}</p>
                    </div>
                    <FontAwesomeIcon className='followed' icon={faUserCheck} />
                </div>

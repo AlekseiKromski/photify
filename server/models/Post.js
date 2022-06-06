@@ -2,9 +2,6 @@ const mongooseDeletePlugin = require('mongoose-delete')
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Post = new Schema({
-    nickname: {
-        type: String
-    },
     description: {
         type: String
     },

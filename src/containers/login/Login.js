@@ -9,6 +9,7 @@ import axios from 'axios';
 import {login} from '../../store/actions/userAction';
 import {connect} from "react-redux";
 import Notification from "../../components/UI/Notification/Notification";
+import {Navigate} from "react-router-dom";
 
 class Login extends Component {
     constructor(props) {
@@ -21,8 +22,10 @@ class Login extends Component {
                 show: false,
                 text: "",
                 type: "error",
-            }
+            },
+            redirect: false,
         }
+
 
     }
     clearError() {
@@ -45,13 +48,13 @@ class Login extends Component {
 
     clickHandler(){
         this.setState({loader: true})
-        axios.post('/api/login', {
+        axios.post('/api/profile/login', {
             email: this.state.email,
             password: this.state.password
         }).then(response => {
             this.props.loginDispatch(response.data);
 
-            this.setState({loader: false})
+            this.setState({loader: false, redirect: true})
 
         }).catch(e => {
             setTimeout( () => {
@@ -65,6 +68,7 @@ class Login extends Component {
         return (
             <div className={Classes.loginBlock}>
                 <div className={Classes.loginBockWrapper}>
+                    {this.state.redirect ? <Navigate to={'/'}/> : ""}
                     { this.state.errors.show ? <Notification type={Classes.loginBlockError} text={this.state.errors.text}  /> : ""}
                     <FontAwesomeIcon icon={faInstagram} className={Classes.icon}/>
                     <h1>Photify</h1>

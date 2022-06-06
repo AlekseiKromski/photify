@@ -17,6 +17,8 @@
     font-size: 14px;
     color: rgba(8, 0, 54, 0.52);
     margin: 0px;
+    overflow: hidden;
+    width: 100%;
 }
 .profile-description{
     font-weight: 300;

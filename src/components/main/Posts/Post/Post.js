@@ -9,13 +9,13 @@ class Post extends Component{
         return (
             <div className={Classes.post}>
                 <div className={Classes.postLeft}>
-                    <Profile/>
-                    <Description/>
+                    <Profile profile={this.props.post.user}/>
+                    <Description description={this.props.post.description}/>
                     <Comments/>
 
                 </div>
                 <div className={Classes.postRight}>
-                    <img className={Classes.postImage} src="/img/posts/fineas-anton-8pKrkO2cx1A-unsplash.jpg" alt=""/>
+                    <img className={Classes.postImage} src={this.props.post.image} alt=""/>
                 </div>
             </div>
         )

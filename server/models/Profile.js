@@ -8,6 +8,9 @@ const Profile = new Schema({
     email: {
         type: String
     },
+    image: {
+      type: String
+    },
     password: {
         type: String
     },
