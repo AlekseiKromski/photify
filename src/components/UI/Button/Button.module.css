@@ -23,15 +23,6 @@
     transition: 0.3s;
 }
 
-.bigEffectLoader{
-    border: 3px solid #f3f3f3;
-    border-top: 3px solid #e05f73;
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    opacity: 0;
-}
 .loader {
     border: 3px solid #f3f3f3;
     border-top: 3px solid #e05f73;
@@ -41,55 +32,10 @@
     animation: spin 2s linear infinite;
 }
 
-.bigEffect{
-    height: 0%;
-    width: 0%;
-    background: #655f89;
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    animation: bigEffectAnimation 1.5s  forwards;
-    border-radius: 8px;
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-}
-.show{
-    animation: showAnimation 1s ease-in forwards, spin 2s linear infinite;
 
-}
-.hide{
-    animation: hideAnimation 1s ease-in forwards;
-}
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-@keyframes bigEffectAnimation {
-    to {
-        height: 105%;
-        width: 105%;
-    }
-}
-@keyframes showAnimation {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-@keyframes hideAnimation {
-    from {
-        opacity: 1;
-        height: 105%;
-        width: 105%;
-    }
-    to {
-        opacity: 0;
-        height: 0%;
-        width: 0%;
-    }
-}
+

@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 import axios from 'axios';
 import {login} from '../../store/actions/userAction';
 import {connect} from "react-redux";
+import Notification from "../../components/UI/Notification/Notification";
 
 class Login extends Component {
     constructor(props) {
@@ -16,11 +17,23 @@ class Login extends Component {
             email: "",
             password: "",
             loader: false,
-            bigEffectTrigger: true
+            errors: {
+                show: false,
+                text: "",
+                type: "error",
+            }
         }
 
     }
-
+    clearError() {
+        this.setState({
+            errors: {
+                show: false,
+                text: "",
+                type: "error",
+            }
+        })
+    }
     InputHandler(type, value){
         if(type === 'email'){
             this.setState({...this.state, email: value})
@@ -30,9 +43,9 @@ class Login extends Component {
         }
     }
 
-    async clickHandler(){
+    clickHandler(){
         this.setState({loader: true})
-        return await axios.post('/api/login', {
+        axios.post('/api/login', {
             email: this.state.email,
             password: this.state.password
         }).then(response => {
@@ -41,8 +54,10 @@ class Login extends Component {
             this.setState({loader: false})
 
         }).catch(e => {
-            this.setState({loader: false, hide: true})
-            return new Promise((resolve, reject) => {reject('hide')});
+            setTimeout( () => {
+                this.setState({loader: false})
+            }, 1500)
+            this.setState({'errors': {show: true,text: e.response.data.message,type: "error"}});
         })
     }
 
@@ -50,12 +65,14 @@ class Login extends Component {
         return (
             <div className={Classes.loginBlock}>
                 <div className={Classes.loginBockWrapper}>
+                    { this.state.errors.show ? <Notification type={Classes.loginBlockError} text={this.state.errors.text}  /> : ""}
                     <FontAwesomeIcon icon={faInstagram} className={Classes.icon}/>
                     <h1>Photify</h1>
                     <div className={Classes.inputs}>
                         <Input setText={(value) => this.InputHandler('email', value)} label="Login"/>
                         <Input setText={(value) => this.InputHandler('password', value)} label="Password" type="password"/>
-                        <Button bigEffect={true} loader={this.state.loader}  clickHandler={() => this.clickHandler()} text="sign in"/>
+                        <Button loader={this.state.loader} clickHandler={() => !this.state.loader ? this.clickHandler() : ""} text="Sign in"/>
+
                     </div>
                     <Link className={Classes.signUp} to={'/register'}>You don't have account? </Link>
                 </div>

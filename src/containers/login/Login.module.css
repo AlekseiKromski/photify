@@ -3,7 +3,6 @@
     width: 300px;
     height: 400px;
     background: rgba(255, 255, 255, 0.55);
-    border: 2px solid white;
     z-index: 2;
     border-radius: 8px;
     box-shadow: 0px 9px 30px -8px #bebebe;
@@ -48,11 +47,29 @@
     color: #f30c31;
     transition: 0.3s;
 }
-
+.loginBlockError{
+    border-top: 3px solid #de425b!important;
+    background: rgba(255, 255, 255, 0.55)!important;
+    border: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    animation: showRegisterBlockError 1s forwards;
+    box-shadow: none!important;
+    backdrop-filter: blur(8px)!important;
+}
 @keyframes fadeIn {
     to{
         opacity: 100%;
         transform: translateY(0px);
+    }
+
+}
+@keyframes showRegisterBlockError {
+    to{
+        opacity: 100%;
+        transform: translateY(-10px);
     }
 
 }

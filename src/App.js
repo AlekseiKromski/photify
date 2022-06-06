@@ -10,9 +10,26 @@ import Profile from './containers/profile/Profile'
 import Login from './containers/login/Login'
 import Register from "./containers/register/Register";
 import {connect} from "react-redux";
-
+import {login} from "./store/actions/userAction";
+import jwtDecode from "jwt-decode";
 class App extends Component{
 
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount() {
+        //Autologin to system if user exist
+        let userObject = JSON.parse(window.localStorage.getItem('user'));
+        if(userObject){
+            let decodedToken = jwtDecode(userObject.token, {complete: true});
+            let date = (new Date()).getTime();
+            if((decodedToken.exp * 1000) > date){
+                this.props.loginDispatch({user: userObject.user,token: userObject.token})
+            }else{
+                window.localStorage.removeItem('user')
+            }
+        }
+    }
 
     render(){
         let render = null
@@ -57,5 +74,10 @@ function mapStateToProps(state){
         user: state.user
     }
 }
+function mapDispatchToProps(dispatch){
+    return{
+        loginDispatch: (value) => dispatch(login(value))
+    }
+}
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

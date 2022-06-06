@@ -13,7 +13,7 @@ Router.post('/login', async (req,res) => {
 
         let profile = await Profile.findOne({email: email}).exec();
         if(profile){
-            let result = bcrypt.compare(password, profile.password)
+            let result = await bcrypt.compare(password, profile.password)
             if(result){
                 return user_token_proccess(res, profile)
             }

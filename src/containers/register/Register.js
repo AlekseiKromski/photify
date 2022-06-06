@@ -7,6 +7,8 @@ import {faInstagram} from "@fortawesome/free-brands-svg-icons";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import Notification from "../../components/UI/Notification/Notification";
+import {login} from "../../store/actions/userAction";
+import {connect} from "react-redux";
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -58,10 +60,15 @@ class Register extends Component {
             password: this.state.form.password.value,
             password_confirmation: this.state.form.password_confirmation.value,
         }).then(response => {
-            this.setState({loader: false})
+            this.props.loginDispatch(response.data);
+            setTimeout( () => {
+                this.setState({loader: false})
+            }, 1500)
 
         }).catch(e => {
-            this.setState({loader: false, hide: true})
+            setTimeout( () => {
+                this.setState({loader: false})
+            }, 1500)
             let errors = 0
             for(let formItem of Object.keys(this.state.form)){
                 if(this.state.form[formItem].value === ''){
@@ -74,10 +81,6 @@ class Register extends Component {
             }
             this.setState({'errors': {show: true,text: e.response.data.message,type: "error"}});
 
-            return new Promise((resolve, reject) => {
-                reject('hide')
-
-            });
         })
     }
 
@@ -93,13 +96,18 @@ class Register extends Component {
                         <Input error={this.state.form.email.error} setText={(value) => {this.registerInputHandler('email', value)}} label="Login"/>
                         <Input error={this.state.form.password.error} setText={(value) => {this.registerInputHandler('password', value)}} label="Password" type="password"/>
                         <Input error={this.state.form.password_confirmation.error} setText={(value) => {this.registerInputHandler('password_confirmation', value)}} label="Password confirmation" type="password"/>
-                        <Button bigEffect={true} loader={this.state.loader} clickHandler={() => this.registerHandler()} text="Sign up"/>
+                        <Button loader={this.state.loader} clickHandler={() => !this.state.loader ? this.registerHandler() : ""} text="Sign up"/>
                     </div>
                     <Link className={Classes.signIn} to={'/login'}>You already have account? </Link>
                 </div>
             </div>
         );
     }
-}
 
-export default Register;
+}
+function mapDispatchToProps(dispatch){
+    return {
+        loginDispatch: (value) => dispatch(login(value))
+    }
+}
+export default connect(null, mapDispatchToProps)(Register);
