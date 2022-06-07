@@ -11,7 +11,6 @@ import Login from './containers/login/Login'
 import Register from "./containers/register/Register";
 import {connect} from "react-redux";
 import {login} from "./store/actions/userAction";
-import jwtDecode from "jwt-decode";
 class App extends Component{
 
     constructor(props) {
@@ -21,19 +20,13 @@ class App extends Component{
         //Autologin to system if user exist
         let userObject = JSON.parse(window.localStorage.getItem('user'));
         if(userObject){
-            let decodedToken = jwtDecode(userObject.token, {complete: true});
-            let date = (new Date()).getTime();
-            if((decodedToken.exp * 1000) > date){
-                this.props.loginDispatch({user: userObject.user,token: userObject.token})
-            }else{
-                window.localStorage.removeItem('user')
-            }
+            this.props.loginDispatch({user: userObject.user})
         }
     }
 
     render(){
         let render = null
-        if(this.props.user.token){
+        if(this.props.user){
             render = (
                 <MainLayout>
                     <Routes>
@@ -71,7 +64,7 @@ class App extends Component{
 
 function mapStateToProps(state){
     return {
-        user: state.user
+        user: state.user.user
     }
 }
 function mapDispatchToProps(dispatch){

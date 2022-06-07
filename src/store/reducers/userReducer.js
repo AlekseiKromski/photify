@@ -2,7 +2,6 @@ import {USER_LOGIN} from '../actions/actionTypes';
 
 const initialState = {
     user: null,
-    token: null
 }
 
 export default function userReducer(state = initialState, action){

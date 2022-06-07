@@ -86,6 +86,8 @@ function user_token_proccess (res, Profile){
             console.log('Token access token generation error')
             return res.status(500).json({"message": "Server error"})
         }
+
+
         try {
 
             jwt.verify(Profile.refresh_token, process.env.SECRET_KEY);
@@ -100,7 +102,12 @@ function user_token_proccess (res, Profile){
             console.log('UPDATE / CREATE REFRESH')
         }
 
-        return res.json({user: profile_excluded, token: access_token})
+
+        //set access token to cookie
+        res.cookie("token", access_token, {
+            httpOnly: true,
+        });
+        return res.json(profile_excluded)
 
     });
 }
