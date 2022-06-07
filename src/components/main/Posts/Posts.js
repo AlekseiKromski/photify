@@ -7,9 +7,6 @@ class Posts extends Component{
     constructor(props) {
         super(props);
         console.log(this.props.posts.length === 0)
-
-
-
     }
 
     componentDidMount() {

@@ -8,12 +8,12 @@ class Comment extends Component{
                 <div className={Classes.commentHeader}>
                     <div className={Classes.profileImg} style={{background: "url('/img/profiles/aiony-haust-3TLl_97HNJo-unsplash.jpg')"}} alt=""/>
                     <div className={Classes.profileData}>
-                        <p>#milana</p>
+                        <p>{this.props.comment.user.nickname}</p>
                         <span>29.04.22</span>
                     </div>
                 </div>
                 <div className={Classes.commentFooter}>
-                    <p>{this.props.comment.text}</p>
+                    <p>{this.props.comment.comment}</p>
                 </div>
             </div>
         )

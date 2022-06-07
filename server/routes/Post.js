@@ -8,10 +8,17 @@ Router.get('/get-all-posts', async (req, res) => {
         populate: {
             path: 'posts',
             match: {deleted: false},
-            populate: {
+            populate: [{
+                path: "comments",
+                populate: {
+                    path: "user",
+                    select: 'nickname image description -_id'
+                }
+            }, {
                 path: "user",
                 select: 'nickname image description -_id'
-            }
+
+            }],
         }
     }).exec();
 

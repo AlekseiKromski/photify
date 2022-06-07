@@ -11,7 +11,7 @@ class Post extends Component{
                 <div className={Classes.postLeft}>
                     <Profile profile={this.props.post.user}/>
                     <Description description={this.props.post.description}/>
-                    <Comments/>
+                    <Comments comments={this.props.post.comments}/>
 
                 </div>
                 <div className={Classes.postRight}>

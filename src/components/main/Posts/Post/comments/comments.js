@@ -11,9 +11,6 @@ class Comments extends Component{
         super(props);
         this.state = {
             scrollRef: null,
-            comments: [{
-                text: "test"
-            }],
             text: ""
         }
     }
@@ -40,9 +37,9 @@ class Comments extends Component{
     }
 
     render(){
-        let displayedComments = this.state.comments.map((comment) =>
+        let displayedComments = this.props.comments.map((comment) =>
             <Comment
-                key={comment.text}
+                key={comment._id}
                 comment={comment}
 
             />
