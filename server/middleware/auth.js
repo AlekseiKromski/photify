@@ -2,30 +2,35 @@ const jwt = require('jsonwebtoken')
 const jwtDecode = require("jwt-decode");
 const Profile = require('../models/Profile')
 const TOKEN_DATE_ACCESS = Math.floor(Date.now() / 1000) + (600)
-const TOKEN_DATE_REFRESH = (Date.now() / 1000) + (((60*60)*24)*30)
 
 module.exports = async function (req,res,next){
     let token = req.cookies.token;
-    let userId = (jwtDecode(token)).user._id
-    let user = await Profile.findById(userId).select('-password');
-    if(token && user){
-        try{
-            let decoded = jwt.verify(token, process.env.SECRET_KEY);
-            req.user = user;
-            next();
-        }catch (e){
-            try {
-                let refresh_token_verify = jwt.verify(user.refresh_token, process.env.SECRET_KEY);
-                user = user_exclude_params(['refresh_token'], user)
-                createToken(user, res)
+    if(token){
+        let userId = (jwtDecode(token)).user._id
+        let user = await Profile.findById(userId).select('-password');
+        if(token && user){
+            try{
+                let decoded = jwt.verify(token, process.env.SECRET_KEY);
                 req.user = user;
                 next();
             }catch (e){
-                res.status(403).json({message: "you should be authorized"})
+                try {
+                    let refresh_token_verify = jwt.verify(user.refresh_token, process.env.SECRET_KEY);
+                    user = user_exclude_params(['refresh_token'], user)
+                    createToken(user, res)
+                    req.user = user;
+                    next();
+                }catch (e){
+                    res.status(403).json({message: "you should be authorized"})
+                }
             }
+        }else{
+            res.status(403).json({message: "you should be authorized"})
         }
     }else{
         res.status(403).json({message: "you should be authorized"})
+
+
     }
 }
 

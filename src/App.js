@@ -11,12 +11,15 @@ import Login from './containers/login/Login'
 import Register from "./containers/register/Register";
 import {connect} from "react-redux";
 import {login} from "./store/actions/userAction";
+import {initAxios} from "./store/actions/settingsReducer";
 class App extends Component{
 
     constructor(props) {
         super(props);
     }
     componentDidMount() {
+        //init axios
+        this.props.initAxios();
         //Autologin to system if user exist
         let userObject = JSON.parse(window.localStorage.getItem('user'));
         if(userObject){
@@ -69,7 +72,8 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){
     return{
-        loginDispatch: (value) => dispatch(login(value))
+        loginDispatch: (value) => dispatch(login(value)),
+        initAxios: (value) => dispatch(initAxios())
     }
 }
 
