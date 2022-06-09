@@ -48,3 +48,24 @@
     margin-top: 20px;
 }
 
+.tryCreatePost{
+    background: #655f89;
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tryCreatePost:hover{
+    background: #7E7A96;
+    transition: 0.3s;
+}
+
+.noPosts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

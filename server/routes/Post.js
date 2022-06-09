@@ -3,8 +3,9 @@ const Post = require('../models/Post')
 const Profile = require('../models/Profile')
 
 Router.get('/get-all-posts', async (req, res) => {
+    console.log(req.user._id)
     let profile = await Profile.findById(req.user._id).populate({
-        path: "followers",
+        path: "followed",
         populate: {
             path: 'posts',
             match: {deleted: false},
@@ -22,9 +23,8 @@ Router.get('/get-all-posts', async (req, res) => {
         }
     }).exec();
 
-
     let posts = [];
-    for(let follower of profile.followers){
+    for(let follower of profile.followed){
         posts = [...posts, ...follower.posts]
     }
 

@@ -21,9 +21,10 @@ class App extends Component{
         //init axios
         this.props.initAxios();
         //Autologin to system if user exist
-        let userObject = JSON.parse(window.localStorage.getItem('user'));
-        if(userObject){
-            this.props.loginDispatch({user: userObject.user})
+        let user = JSON.parse(window.localStorage.getItem('user'));
+        console.log(user)
+        if(user){
+            this.props.loginDispatch(user)
         }
     }
 
