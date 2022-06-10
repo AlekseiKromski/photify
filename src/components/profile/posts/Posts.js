@@ -37,19 +37,36 @@ class Posts extends Component {
                 <h1>Posts</h1>
                 {
                     this.state.posts.length !== 0 ? this.state.posts.map(post => {
-                        return (
-                            <div className={Classes.postRow} style={ post.length < 3 ? {marginTop: '70px'} : null}>
-                                {
-                                    post.map(post_ => {
-                                        console.log(post_)
-                                        return (
-                                            <div className={Classes.post} style={{background: "url('" + post_.image +"')"}}></div>
+                        let render;
+                        if(this.state.posts.length > 1){
+                            render = (
+                                <div className={Classes.postRow} style={post.length < 3 ? {marginTop: '70px'} : null}>
+                                    {
+                                        post.map(post_ => {
+                                            return (
+                                                <div className={Classes.post} style={{background: "url('" + post_.image +"')"}}></div>
 
-                                        )
-                                    })
-                                }
-                            </div>
-                        )
+                                            )
+                                        })
+                                    }
+                                </div>
+                            )
+                        }else{
+                            render = (
+                                <div className={Classes.postRow}>
+                                    {
+                                        post.map(post_ => {
+                                            return (
+                                                <div className={Classes.post} style={{background: "url('" + post_.image +"')"}}></div>
+
+                                            )
+                                        })
+                                    }
+                                </div>
+                            )
+                        }
+
+                        return render
                     }) : <div className={Classes.noPosts}>
                         <img style={{width: "80%", display: "block"}} src={'/img/posts/no_post2.jpg'} />
                         <NavLink className={Classes.tryCreatePost} to={"/create-post"}>It's time to create your first post!</NavLink>

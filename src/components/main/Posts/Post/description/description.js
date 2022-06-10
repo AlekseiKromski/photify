@@ -8,7 +8,7 @@ class Description extends Component{
                 <p>
                     {this.props.description}
                 </p>
-                <span className={Classes.date}>29.04.2022 - </span>
+                {/*<span className={Classes.date}>29.04.2022 - </span>*/}
             </div>
         )
     }

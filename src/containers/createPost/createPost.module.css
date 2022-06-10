@@ -11,3 +11,17 @@
 .createPostMenu{
     flex: 26%;
 }
+.result{
+    width: 50%;
+    margin-top: 20px;
+
+}
+.resultBlock{
+    display: flex;
+    justify-content: center;
+}
+.resultBlockWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

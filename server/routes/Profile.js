@@ -11,7 +11,7 @@ Router.post('/login', async (req,res) => {
         email = req.body.email;
         password = req.body.password;
 
-        let profile = await Profile.findOne({email: email}).exec();
+        let profile = await Profile.findOne({email: email}).populate('posts').exec();
         if(profile){
             let result = await bcrypt.compare(password, profile.password)
             if(result){

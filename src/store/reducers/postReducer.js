@@ -1,4 +1,4 @@
-import {POSTS_GET} from '../actions/actionTypes';
+import {POST_CREATE, POSTS_GET} from '../actions/actionTypes';
 
 const initialState = {
     posts: [],

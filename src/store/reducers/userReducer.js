@@ -1,4 +1,4 @@
-import {USER_LOGIN, USER_LOGOUT} from '../actions/actionTypes';
+import {USER_LOGIN, USER_LOGOUT, USER_UPLOAD_POST} from '../actions/actionTypes';
 
 const initialState = {
     user: null,
@@ -18,6 +18,16 @@ export default function userReducer(state = initialState, action){
             return {
                 user: null
             }
+            break;
+        case USER_UPLOAD_POST:
+            let newState = {
+                user: {
+                    ...state.user,
+                    posts: [action.payload,...state.user.posts]
+                }
+            }
+            window.localStorage.setItem('user', JSON.stringify(newState.user))
+            return newState;
             break;
     }
 }
