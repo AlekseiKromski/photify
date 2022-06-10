@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use('/api/profile', Profile_Router);
 app.use('/api/post',auth__middleware , Post_Router);
-app.use('/api/comment', Comment_Router);
+app.use('/api/comment',auth__middleware, Comment_Router);
 
 app.listen(process.env.SERVER_PORT, () => {
     console.log(`Server was started at ${process.env.SERVER_PORT} port`)

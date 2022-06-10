@@ -16,7 +16,7 @@ class Post extends Component{
                 <div className={Classes.postLeft}>
                     <Profile profile={this.props.post.user}/>
                     <Description description={this.props.post.description}/>
-                    {this.state.showComments ? <Comments comments={this.props.post.comments}/> : null}
+                    {this.state.showComments ? <Comments postId={this.props.post._id} comments={this.props.post.comments}/> : null}
                 </div>
                 <div className={Classes.postRight}>
                     <img className={Classes.postImage} src={this.props.post.image} alt=""/>
