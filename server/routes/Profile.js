@@ -11,7 +11,7 @@ Router.post('/login', async (req,res) => {
         email = req.body.email;
         password = req.body.password;
 
-        let profile = await Profile.findOne({email: email}).populate('posts').exec();
+        let profile = await Profile.findOne({email: email}).populate(['posts', 'followed']).exec();
         if(profile){
             let result = await bcrypt.compare(password, profile.password)
             if(result){
@@ -76,6 +76,14 @@ Router.post('/register', async (req,res) => {
     }
 
 })
+Router.get('/account/:id', async (req,res) => {
+    if(req.params.id){
+        res.status(200).json(await Profile.findById(req.params.id).populate('posts').exec())
+    }else{
+        res.status(500).json({msg: "id is required"})
+    }
+})
+
 
 function user_token_proccess (res, Profile){
     let profile_excluded = user_exclude_params(['password', 'refresh_token'], Profile)

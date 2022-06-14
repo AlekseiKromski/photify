@@ -11,6 +11,15 @@ class Posts extends Component {
     }
 
     componentDidMount() {
+       this.preparePosts()
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.posts.length !== prevProps.posts.length){
+            this.preparePosts();
+        }
+    }
+
+    preparePosts(){
         let posts_ = []
         if(this.props.posts.length > 3){
             let postBuffer = [];
@@ -30,7 +39,6 @@ class Posts extends Component {
         }
         this.setState({posts: posts_})
     }
-
     render() {
         return (
             <div className={Classes.posts}>
@@ -44,7 +52,7 @@ class Posts extends Component {
                                     {
                                         post.map(post_ => {
                                             return (
-                                                <div className={Classes.post} style={{background: "url('" + post_.image +"')"}}></div>
+                                                <div key={post_._id} className={Classes.post} style={{background: "url('" + post_.image +"')"}}></div>
 
                                             )
                                         })
@@ -57,7 +65,7 @@ class Posts extends Component {
                                     {
                                         post.map(post_ => {
                                             return (
-                                                <div className={Classes.post} style={{background: "url('" + post_.image +"')"}}></div>
+                                                <div key={post_._id} className={Classes.post} style={{background: "url('" + post_.image +"')"}}></div>
 
                                             )
                                         })
@@ -78,7 +86,7 @@ class Posts extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        posts: state.user.user.posts
+        // posts: state.user.user.posts
     }
 }
 export default connect(mapStateToProps, null)(Posts);

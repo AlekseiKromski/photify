@@ -37,7 +37,7 @@ class App extends Component{
                         <Route path={'/'} element={<Main/>}></Route>
                         <Route path={'/chat'} element={<Chat/>}></Route>
                         <Route path={'/create-post'} element={<CreatePost/>}></Route>
-                        <Route path={'/profile'} element={<Profile/>}></Route>
+                        <Route path={'/profile/:userId'} element={<Profile/>}></Route>
                         <Route path="*" element={<Navigate to={'/'}/>}/>
 
                     </Routes>

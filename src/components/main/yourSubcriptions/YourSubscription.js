@@ -1,21 +1,24 @@
 import {Component} from "react";
 import Classes from './YourSubscription.module.css';
 import Profile from './Profile/Profile'
+import {connect} from "react-redux";
 
 class YourSubscription extends Component{
     render(){
-        let test = []
-        for(let i = 0; i < 4; i++){
-            test.push(<Profile key={i}/>)
-        }
 
         return (
             <div className={Classes.main}>
                 <h1>Your subscriptions</h1>
-                {test}
+                {this.props.user.followed.map(profile => {
+                    return (<Profile key={profile._id} profile={profile}/>)
+                })}
             </div>
         )
     }
 }
-
-export default YourSubscription;
+const mapStateToProps = (state) => {
+    return {
+        user: state.user.user
+    }
+}
+export default connect(mapStateToProps, null)(YourSubscription);

@@ -1,6 +1,6 @@
 .posts{
-    flex: 78%;
     padding: 0px 19px;
+    width: 100%;
     position: relative;
 }
 .posts h1{
@@ -21,7 +21,7 @@
 
 .post{
     width: 174px;
-    height: 240px;
+    height: 300px;
     border-radius: 8px;
     background-size: cover!important;
     background-position: 50% 50%!important;
@@ -30,7 +30,7 @@
 }
 .post:nth-child(2){
     width: 174px;
-    height: 240px;
+    height: 300px;
     border-radius: 8px;
     background-size: cover!important;
     background-position: 50% 50%!important;

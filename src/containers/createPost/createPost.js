@@ -18,7 +18,7 @@ class CreatePost extends Component {
                 "user": this.props.user,
             },
             loader: false,
-            result: 'success',
+            result: null,
         }
     }
     forwardState(state){

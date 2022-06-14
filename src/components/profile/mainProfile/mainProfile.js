@@ -6,7 +6,6 @@ import {faInstagram} from '@fortawesome/free-brands-svg-icons'
 import {connect} from "react-redux";
 class MainProfile extends Component {
     render() {
-        console.log(this.props.user)
         return (
             <div className={Classes.profile}>
                 <FontAwesomeIcon className={Classes.edit} icon={faPencil}></FontAwesomeIcon>
@@ -33,7 +32,7 @@ class MainProfile extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        user: state.user.user
+
     }
 }
 export default connect(mapStateToProps, null)(MainProfile);
