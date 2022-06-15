@@ -1,7 +1,7 @@
 import {USER_LOGIN, USER_LOGOUT, USER_UPLOAD_POST} from '../actions/actionTypes';
 
 const initialState = {
-    user: null,
+    user: undefined,
 }
 
 export default function userReducer(state = initialState, action){
@@ -15,6 +15,8 @@ export default function userReducer(state = initialState, action){
             }
             break;
         case USER_LOGOUT:
+            window.location = '/'
+
             return {
                 user: null
             }

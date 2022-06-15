@@ -10,6 +10,7 @@ Router.post('/create-comment', async (req,res) => {
         let post = Post.findById(req.body.postId,  async (err, doc) => {
             // eslint-disable-next-line no-unused-expressions
             err ? res.status(500).json({message:"server error"}) : null;
+
             doc.comments.push(comment);
             await doc.save();
         })

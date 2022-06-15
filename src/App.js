@@ -12,54 +12,79 @@ import Register from "./containers/register/Register";
 import {connect} from "react-redux";
 import {login} from "./store/actions/userAction";
 import {initAxios} from "./store/actions/settingsReducer";
+import Loader from "./components/UI/Loader/Loader";
 class App extends Component{
 
     constructor(props) {
         super(props);
+        this.state = {
+            loader: true
+        }
     }
     componentDidMount() {
         //init axios
         this.props.initAxios();
         //Autologin to system if user exist
         let user = JSON.parse(window.localStorage.getItem('user'));
-        console.log(user)
         if(user){
             this.props.loginDispatch(user)
+        }else{
+            this.props.loginDispatch(null)
+
+        }
+        setTimeout(() => {
+            this.setState({
+                loader: false
+            })
+        }, 1500)
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.state.loader){
+            document.querySelector('body').style.overflow = 'hidden'
+        }else{
+            document.querySelector('body').style.overflow = 'scroll'
+
         }
     }
 
     render(){
         let render = null
-        if(this.props.user){
-            render = (
-                <MainLayout>
-                    <Routes>
-                        <Route path={'/'} element={<Main/>}></Route>
-                        <Route path={'/chat'} element={<Chat/>}></Route>
-                        <Route path={'/create-post'} element={<CreatePost/>}></Route>
-                        <Route path={'/profile/:userId'} element={<Profile/>}></Route>
-                        <Route path="*" element={<Navigate to={'/'}/>}/>
+        if(this.props.user !== undefined){
+            if(this.props.user !== null ){
+                render = (
+                    <MainLayout>
+                        <Routes>
+                            <Route path={'/'} element={<Main/>}></Route>
+                            <Route path={'/chat'} element={<Chat/>}></Route>
+                            <Route path={'/create-post'} element={<CreatePost/>}></Route>
+                            <Route path={'/profile/:userId'} element={<Profile/>}></Route>
+                            <Route path="*" element={<Navigate to={'/'}/>}/>
 
-                    </Routes>
-                </MainLayout>
-            )
-        }else {
-            render = (
-                <LoginLayout>
-                    <Routes>
-                        <Route path={'/login'} element={<Login/>}></Route>
-                        <Route path={'/register'} element={<Register/>}></Route>
-                        <Route path="*" element={<Navigate to={'/login'}/>}/>
-                    </Routes>
-                </LoginLayout>
+                        </Routes>
+                    </MainLayout>
+                )
+            }else {
+                render = (
+                    <LoginLayout>
+                        <Routes>
+                            <Route path={'/login'} element={<Login/>}></Route>
+                            <Route path={'/register'} element={<Register/>}></Route>
+                            <Route path="*" element={<Navigate to={'/login'}/>}/>
+                        </Routes>
+                    </LoginLayout>
+                )
 
-            )
-
+            }
+        }else{
+            render = ''
         }
 
         return (
             <div>
-                {render}
+                {this.state.loader ? <Loader></Loader> : ""}
+                <div style={{'overflow': "hidden"}}>
+                    {render}
+                </div>
             </div>
 
         )

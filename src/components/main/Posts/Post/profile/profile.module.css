@@ -24,6 +24,7 @@
     font-weight: 300;
     font-size: 12px;
     margin: 0;
+    color: rgba(0, 3, 34, 0.82);
 }
 .profile-data{
     display: flex;

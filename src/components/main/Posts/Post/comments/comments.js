@@ -6,6 +6,7 @@ import Send from '../../../../UI/send/Send'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import {connect} from "react-redux";
+import {setComment} from "../../../../../store/actions/postAction";
 class Comments extends Component{
 
     constructor(props) {
@@ -13,13 +14,7 @@ class Comments extends Component{
         this.state = {
             scrollRef: null,
             text: "",
-            comments: []
         }
-    }
-    componentDidMount() {
-        this.setState({
-            comments: [...this.props.comments]
-        })
     }
 
     setScrollRef(ref){
@@ -37,7 +32,8 @@ class Comments extends Component{
                 comment: this.state.text,
                 postId: this.props.postId
             }).then(({data}) => {
-                this.setState({comments: [...this.state.comments, data], text: ""})
+                this.props.setComment({data, postId: this.props.postId});
+                this.setState({text: ""})
             }).catch(e => {
                 console.log(e)
             })
@@ -50,7 +46,7 @@ class Comments extends Component{
     }
 
     render(){
-        let displayedComments = this.state.comments.map((comment) =>
+        let displayedComments = this.props.comments.map((comment) =>
             <Comment
                 key={comment._id}
                 comment={comment}
@@ -81,5 +77,10 @@ const mapStateToProps = (state) => {
         axios: state.settings.axios
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setComment: (value) => dispatch(setComment(value))
+    }
+}
 
-export default connect(mapStateToProps, null)(Comments);
+export default connect(mapStateToProps, mapDispatchToProps)(Comments);

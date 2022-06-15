@@ -9,9 +9,9 @@ class YourSubscription extends Component{
         return (
             <div className={Classes.main}>
                 <h1>Your subscriptions</h1>
-                {this.props.user.followed.map(profile => {
+                {this.props.user.followed.length != 0 ? this.props.user.followed.map(profile => {
                     return (<Profile key={profile._id} profile={profile}/>)
-                })}
+                }) : <p>You are not followed</p>}
             </div>
         )
     }

@@ -10,13 +10,13 @@ class Posts extends Component{
 
     componentDidMount() {
         // eslint-disable-next-line no-unused-expressions
-        this.props.posts.length === 0 ? this.props.loadPosts() : null
+        this.props.posts.length === 0 && !this.props.alreadyInit ? this.props.loadPosts() : null
     }
 
     render(){
         return (
             <div className={Classes.posts}>
-                {this.props.posts.length !== 0 ? this.props.posts.map(post => <Post post={post} key={post}/>) : <div>
+                {this.props.posts.length !== 0 ? this.props.posts.map(post => <Post post={post} key={post._id}/>) : <div>
                     <img className={Classes.noPost} src="/img/posts/no_post.jpg"/>
                     <p style={{textAlign: "center"}}>No post, try to follow by someone </p>
                 </div>}
@@ -31,7 +31,8 @@ function dispatchToProps(dispatch){
 }
 function stateToProps(state){
     return {
-        posts: state.post.posts
+        posts: state.post.posts,
+        alreadyInit: state.post.alreadyInit
     }
 }
 export default connect(stateToProps, dispatchToProps)(Posts);

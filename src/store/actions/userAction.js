@@ -1,7 +1,8 @@
 import {USER_LOGIN, USER_LOGOUT, USER_UPLOAD_POST} from "./actionTypes";
 //User and token for payload
 export function login(user){
-    window.localStorage.setItem('user', JSON.stringify(user))
+    // eslint-disable-next-line no-unused-expressions
+    user ? window.localStorage.setItem('user', JSON.stringify(user)) : null
     return {
        type: USER_LOGIN,
        payload: {

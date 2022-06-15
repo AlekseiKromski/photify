@@ -17,9 +17,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-
 Router.get('/get-all-posts', async (req, res) => {
-    console.log(req.user._id)
+
     let profile = await Profile.findById(req.user._id).populate({
         path: "followed",
         populate: {
@@ -29,11 +28,11 @@ Router.get('/get-all-posts', async (req, res) => {
                 path: "comments",
                 populate: {
                     path: "user",
-                    select: 'nickname image description -_id'
+                    select: 'nickname image description _id'
                 }
             }, {
                 path: "user",
-                select: 'nickname image description -_id'
+                select: 'nickname image description _id'
 
             }],
         }

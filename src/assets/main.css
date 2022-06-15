@@ -8,6 +8,7 @@ body{
    width: 1002px;
    margin: auto;
    position: relative;
+   margin-top: 12px;
 
 }
 .row{
@@ -16,9 +17,16 @@ body{
 }
 
 
+
 @media screen and (max-width: 1400px) {
    .container{
       width: 690px;
+   }
+}
+
+@media screen and (max-width: 1300px) {
+   .container{
+      width: 1000px;
    }
 }
 

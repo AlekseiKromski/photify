@@ -12,6 +12,8 @@ Router.post('/login', async (req,res) => {
         password = req.body.password;
 
         let profile = await Profile.findOne({email: email}).populate(['posts', 'followed']).exec();
+        console.log(profile)
+
         if(profile){
             let result = await bcrypt.compare(password, profile.password)
             if(result){
@@ -32,7 +34,8 @@ Router.post('/register', async (req,res) => {
         nickname = req.body.nickname;
 
         if(password_confirmation === password){
-            let profile = await Profile.findOne({email: email}).exec();
+            let profile = await Profile.findOne({email: email}).populate(['posts', 'followed']).exec();
+
             if(!profile){
 
                 await bcrypt.hash(password, 10, async function(err, hash) {
@@ -42,8 +45,12 @@ Router.post('/register', async (req,res) => {
                     }
                     let profile
                     try{
+                        let nickname_ = nickname ? nickname : email;
+                        if(nickname_.length > 10){
+                            nickname_ = nickname_[0] + nickname_[3] + nickname_[6] + nickname_[9]
+                        }
                         profile = await Profile.create({
-                            nickname: nickname ? nickname : email,
+                            nickname: nickname_,
                             email: email,
                             password: hash,
                             description: "",
@@ -78,7 +85,11 @@ Router.post('/register', async (req,res) => {
 })
 Router.get('/account/:id', async (req,res) => {
     if(req.params.id){
-        res.status(200).json(await Profile.findById(req.params.id).populate('posts').exec())
+        try{
+            res.status(200).json(await Profile.findById(req.params.id).populate('posts').exec())
+        }catch (e){
+            res.status(500).json({msg: "problem with id"})
+        }
     }else{
         res.status(500).json({msg: "id is required"})
     }
@@ -86,8 +97,9 @@ Router.get('/account/:id', async (req,res) => {
 
 
 function user_token_proccess (res, Profile){
-    let profile_excluded = user_exclude_params(['password', 'refresh_token'], Profile)
-
+    let user_posts = [...Profile.posts]
+    let user_followed = [...Profile.followed]
+    let profile_excluded = user_exclude_params(['password', 'refresh_token', 'posts', 'followed'], Profile)
     jwt.sign({ user: profile_excluded, exp: TOKEN_DATE_ACCESS}, process.env.SECRET_KEY, async function(err, access_token) {
         if(err){
             console.log(err)
@@ -115,6 +127,9 @@ function user_token_proccess (res, Profile){
         res.cookie("token", access_token, {
             httpOnly: true,
         });
+
+        profile_excluded.posts = user_posts;
+        profile_excluded.followed = user_followed;
         return res.json(profile_excluded)
 
     });
